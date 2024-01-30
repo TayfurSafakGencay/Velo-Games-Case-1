@@ -1,18 +1,17 @@
 ﻿using Runtime.Contexts.Main.Vo;
 using strange.extensions.mediation.impl;
 using TMPro;
-using UnityEngine;
 using UnityEngine.UI;
 
-namespace Runtime.Contexts.Main.View.BookListPanel.Item
+namespace Runtime.Contexts.Main.View.BookListPanel.Item.Book
 {
   public class BookListPanelItemView : EventView
   {
     public TextMeshProUGUI listNumberText;
     
-    public TextMeshProUGUI bookNameText;
-    
     public TextMeshProUGUI isbnText;
+    
+    public TextMeshProUGUI bookNameText;
     
     public TextMeshProUGUI authorNameText;
 
@@ -21,9 +20,6 @@ namespace Runtime.Contexts.Main.View.BookListPanel.Item
     public TextMeshProUGUI borrowedCountText;
     
     public Button borrowButton;
-
-    [HideInInspector]
-    public bool panelType;
 
     private BookVo bookVo;
     
