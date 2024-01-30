@@ -1,0 +1,31 @@
+{
+    "bookVos": [
+        {
+            "Key": 1430132023,
+            "Value": {
+                "title": "The Hunger Games",
+                "author": "Suzanne Collins",
+                "ISBN": 1430132023,
+                "copy": 13,
+                "borrowedBookCount": 0,
+                "borrowCode": null,
+                "borrowedDate": "0001-01-01T00:00:00.0000000",
+                "endBorrowDate": "0001-01-01T00:00:00.0000000",
+                "expired": false
+            }
+        }
+    ],
+    "authorsBooks": {
+        "Suzanne Collins": {
+            "$type": "System.Collections.Generic.List`1[System.Int32], mscorlib",
+            "$elements": [
+                1430132023
+            ]
+        }
+    },
+    "bookIsbn": {
+        "The Hunger Games": 1430132023
+    },
+    "borrowedBooks": {},
+    "expiredBooks": {}
+}
