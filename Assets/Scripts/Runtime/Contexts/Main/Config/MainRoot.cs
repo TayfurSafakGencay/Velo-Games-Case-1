@@ -6,7 +6,7 @@ namespace Runtime.Contexts.Main.Config
   {
     private void Awake()
     {
-      context = new CONTEXTCLASS(this);
+      context = new MainContext(this);
     }
   }
 }
