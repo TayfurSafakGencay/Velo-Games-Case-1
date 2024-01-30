@@ -68,7 +68,7 @@ namespace Runtime.Contexts.Main.View.BookListPanel.Item.Book
       view.listNumberText.text = view.GetID() + 1 + ".";
       view.bookNameText.text = view.GetBookVo().title;
       view.authorNameText.text = view.GetBookVo().author;
-      view.isbnText.text = view.GetBookVo().ISBN.ToString();
+      view.isbnText.text = view.GetBookVo().ISBN;
       view.copyText.text = view.GetBookVo().copy.ToString();
       view.borrowedCountText.text = view.GetBookVo().borrowedBookCount.ToString();
     }

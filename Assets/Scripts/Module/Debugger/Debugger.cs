@@ -47,19 +47,19 @@ namespace Module.Debugger
     
     public static void ReturnedBook(BookVo bookVo)
     {
-      string greenColor = $"#{ColorUtility.ToHtmlStringRGBA(Color.green)}";
+      string color = $"#{ColorUtility.ToHtmlStringRGBA(Color.green)}";
       string whiteColor = $"#{ColorUtility.ToHtmlStringRGBA(Color.white)}";
       
-      Debug.Log($"<color={greenColor}>The book returned. </color>" + 
-                $"<color={greenColor}>Book Name: </color>" + $"<color={whiteColor}>" + bookVo.title + "</color>, " +
-                $"<color={greenColor}>Author: </color>" + $"<color={whiteColor}>" + bookVo.author + "</color>, " +
-                $"<color={greenColor}>ISBN: </color>" + $"<color={whiteColor}>" + bookVo.ISBN + "</color>, " +
-                $"<color={greenColor}>Copy Count: </color>" + $"<color={whiteColor}>" + bookVo.copy + "</color>, " +
-                $"<color={greenColor}>Borrowed Count: </color>" + $"<color={whiteColor}>" + bookVo.borrowedBookCount + "</color>, " + 
-                $"<color={greenColor}>Borrowed Date: </color>" + $"<color={whiteColor}>" + bookVo.borrowedDate + "</color>, " +
-                $"<color={greenColor}>Deadline: </color>" + $"<color={whiteColor}>" + bookVo.endBorrowDate + "</color>, " +
-                $"<color={greenColor}>Borrow Code: </color>" + $"<color={whiteColor}>" + bookVo.borrowCode + "</color>, " +
-                $"<color={greenColor}>Expired: </color>" + $"<color={whiteColor}>" + bookVo.expired + "</color>.");
+      Debug.Log($"<color={color}>The book returned. </color>" + 
+                $"<color={color}>Book Name: </color>" + $"<color={whiteColor}>" + bookVo.title + "</color>, " +
+                $"<color={color}>Author: </color>" + $"<color={whiteColor}>" + bookVo.author + "</color>, " +
+                $"<color={color}>ISBN: </color>" + $"<color={whiteColor}>" + bookVo.ISBN + "</color>, " +
+                $"<color={color}>Copy Count: </color>" + $"<color={whiteColor}>" + bookVo.copy + "</color>, " +
+                $"<color={color}>Borrowed Count: </color>" + $"<color={whiteColor}>" + bookVo.borrowedBookCount + "</color>, " + 
+                $"<color={color}>Borrowed Date: </color>" + $"<color={whiteColor}>" + bookVo.borrowedDate + "</color>, " +
+                $"<color={color}>Deadline: </color>" + $"<color={whiteColor}>" + bookVo.endBorrowDate + "</color>, " +
+                $"<color={color}>Borrow Code: </color>" + $"<color={whiteColor}>" + bookVo.borrowCode + "</color>, " +
+                $"<color={color}>Expired: </color>" + $"<color={whiteColor}>" + bookVo.expired + "</color>.");
     }
 
     public static void IsbnError()

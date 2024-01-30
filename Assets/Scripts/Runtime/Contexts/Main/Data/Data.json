@@ -1,31 +1,291 @@
 {
-    "bookVos": [
-        {
-            "Key": 1430132023,
-            "Value": {
-                "title": "The Hunger Games",
-                "author": "Suzanne Collins",
-                "ISBN": 1430132023,
-                "copy": 13,
-                "borrowedBookCount": 0,
-                "borrowCode": null,
-                "borrowedDate": "0001-01-01T00:00:00.0000000",
-                "endBorrowDate": "0001-01-01T00:00:00.0000000",
-                "expired": false
-            }
+    "bookVos": {
+        "1": {
+            "$type": "Runtime.Contexts.Main.Vo.BookVo, Assembly-CSharp",
+            "title": "The Hunger Games",
+            "author": "Suzanne Collins",
+            "ISBN": "1",
+            "copy": 5,
+            "borrowedBookCount": 0,
+            "borrowCode": null,
+            "borrowedDate": "0001-01-01T00:00:00.0000000",
+            "endBorrowDate": "0001-01-01T00:00:00.0000000",
+            "expired": false
+        },
+        "2": {
+            "$type": "Runtime.Contexts.Main.Vo.BookVo, Assembly-CSharp",
+            "title": "Harry Potter and the Philosopher's Stone",
+            "author": "Jk Rowling",
+            "ISBN": "2",
+            "copy": 7,
+            "borrowedBookCount": 1,
+            "borrowCode": null,
+            "borrowedDate": "0001-01-01T00:00:00.0000000",
+            "endBorrowDate": "0001-01-01T00:00:00.0000000",
+            "expired": false
+        },
+        "5": {
+            "$type": "Runtime.Contexts.Main.Vo.BookVo, Assembly-CSharp",
+            "title": "1984",
+            "author": "George Orwell",
+            "ISBN": "5",
+            "copy": 66,
+            "borrowedBookCount": 0,
+            "borrowCode": null,
+            "borrowedDate": "0001-01-01T00:00:00.0000000",
+            "endBorrowDate": "0001-01-01T00:00:00.0000000",
+            "expired": false
+        },
+        "7": {
+            "$type": "Runtime.Contexts.Main.Vo.BookVo, Assembly-CSharp",
+            "title": "The Great Gatsby",
+            "author": "F Scott Fitzgerald",
+            "ISBN": "7",
+            "copy": 2,
+            "borrowedBookCount": 2,
+            "borrowCode": null,
+            "borrowedDate": "0001-01-01T00:00:00.0000000",
+            "endBorrowDate": "0001-01-01T00:00:00.0000000",
+            "expired": false
+        },
+        "11": {
+            "$type": "Runtime.Contexts.Main.Vo.BookVo, Assembly-CSharp",
+            "title": "To Kill a Mockingbird",
+            "author": "Harper Lee",
+            "ISBN": "11",
+            "copy": 4,
+            "borrowedBookCount": 1,
+            "borrowCode": null,
+            "borrowedDate": "0001-01-01T00:00:00.0000000",
+            "endBorrowDate": "0001-01-01T00:00:00.0000000",
+            "expired": false
+        },
+        "412445": {
+            "$type": "Runtime.Contexts.Main.Vo.BookVo, Assembly-CSharp",
+            "title": "Pride and Prejudice",
+            "author": "Jane Austen",
+            "ISBN": "30",
+            "copy": 5,
+            "borrowedBookCount": 0,
+            "borrowCode": null,
+            "borrowedDate": "0001-01-01T00:00:00.0000000",
+            "endBorrowDate": "0001-01-01T00:00:00.0000000",
+            "expired": false
+        },
+        "33": {
+            "$type": "Runtime.Contexts.Main.Vo.BookVo, Assembly-CSharp",
+            "title": "Jane Eyre",
+            "author": "Charlotte Bronte",
+            "ISBN": "33",
+            "copy": 7,
+            "borrowedBookCount": 1,
+            "borrowCode": null,
+            "borrowedDate": "0001-01-01T00:00:00.0000000",
+            "endBorrowDate": "0001-01-01T00:00:00.0000000",
+            "expired": false
+        },
+        "13": {
+            "$type": "Runtime.Contexts.Main.Vo.BookVo, Assembly-CSharp",
+            "title": "Wuthering Heights",
+            "author": "Emily Bronte",
+            "ISBN": "13",
+            "copy": 6,
+            "borrowedBookCount": 1,
+            "borrowCode": null,
+            "borrowedDate": "0001-01-01T00:00:00.0000000",
+            "endBorrowDate": "0001-01-01T00:00:00.0000000",
+            "expired": false
+        },
+        "17": {
+            "$type": "Runtime.Contexts.Main.Vo.BookVo, Assembly-CSharp",
+            "title": "Anna Karenina",
+            "author": "Leo Tolstoy",
+            "ISBN": "17",
+            "copy": 8,
+            "borrowedBookCount": 3,
+            "borrowCode": null,
+            "borrowedDate": "0001-01-01T00:00:00.0000000",
+            "endBorrowDate": "0001-01-01T00:00:00.0000000",
+            "expired": false
         }
-    ],
+    },
     "authorsBooks": {
         "Suzanne Collins": {
-            "$type": "System.Collections.Generic.List`1[System.Int32], mscorlib",
+            "$type": "System.Collections.Generic.List`1[System.String], mscorlib",
             "$elements": [
-                1430132023
+                "1"
+            ]
+        },
+        "Jk Rowling": {
+            "$type": "System.Collections.Generic.List`1[System.String], mscorlib",
+            "$elements": [
+                "2"
+            ]
+        },
+        "George Orwell": {
+            "$type": "System.Collections.Generic.List`1[System.String], mscorlib",
+            "$elements": [
+                "5"
+            ]
+        },
+        "F Scott Fitzgerald": {
+            "$type": "System.Collections.Generic.List`1[System.String], mscorlib",
+            "$elements": [
+                "7"
+            ]
+        },
+        "Harper Lee": {
+            "$type": "System.Collections.Generic.List`1[System.String], mscorlib",
+            "$elements": [
+                "11"
+            ]
+        },
+        "Jane Austen": {
+            "$type": "System.Collections.Generic.List`1[System.String], mscorlib",
+            "$elements": [
+                "412445"
+            ]
+        },
+        "Charlotte Bronte": {
+            "$type": "System.Collections.Generic.List`1[System.String], mscorlib",
+            "$elements": [
+                "33"
+            ]
+        },
+        "Emily Bronte": {
+            "$type": "System.Collections.Generic.List`1[System.String], mscorlib",
+            "$elements": [
+                "13"
+            ]
+        },
+        "Leo Tolstoy": {
+            "$type": "System.Collections.Generic.List`1[System.String], mscorlib",
+            "$elements": [
+                "17"
             ]
         }
     },
     "bookIsbn": {
-        "The Hunger Games": 1430132023
+        "The Hunger Games": "1",
+        "Harry Potter and the Philosopher's Stone": "2",
+        "1984": "5",
+        "The Great Gatsby": "7",
+        "To Kill a Mockingbird": "11",
+        "Pride and Prejudice": "412445",
+        "Jane Eyre": "33",
+        "Wuthering Heights": "13",
+        "Anna Karenina": "17"
     },
-    "borrowedBooks": {},
-    "expiredBooks": {}
+    "borrowedBooks": {
+        "ibyKRxKt": {
+            "$type": "Runtime.Contexts.Main.Vo.BookVo, Assembly-CSharp",
+            "title": "Anna Karenina",
+            "author": "Leo Tolstoy",
+            "ISBN": "17",
+            "copy": 8,
+            "borrowedBookCount": 2,
+            "borrowCode": "ibyKRxKt",
+            "borrowedDate": "2024-01-30T18:32:31.5028585+03:00",
+            "endBorrowDate": "2024-02-02T14:40:36.5028585+03:00",
+            "expired": false
+        },
+        "MITP03hd": {
+            "$type": "Runtime.Contexts.Main.Vo.BookVo, Assembly-CSharp",
+            "title": "To Kill a Mockingbird",
+            "author": "Harper Lee",
+            "ISBN": "11",
+            "copy": 4,
+            "borrowedBookCount": 1,
+            "borrowCode": "MITP03hd",
+            "borrowedDate": "2024-01-30T18:32:32.8460852+03:00",
+            "endBorrowDate": "2024-01-31T12:45:38.8460852+03:00",
+            "expired": false
+        },
+        "R7xA8Moe": {
+            "$type": "Runtime.Contexts.Main.Vo.BookVo, Assembly-CSharp",
+            "title": "Harry Potter and the Philosopher's Stone",
+            "author": "Jk Rowling",
+            "ISBN": "2",
+            "copy": 7,
+            "borrowedBookCount": 1,
+            "borrowCode": "R7xA8Moe",
+            "borrowedDate": "2024-01-30T18:32:34.2811970+03:00",
+            "endBorrowDate": "2024-02-01T22:28:41.2811970+03:00",
+            "expired": false
+        },
+        "SyXHEgPA": {
+            "$type": "Runtime.Contexts.Main.Vo.BookVo, Assembly-CSharp",
+            "title": "The Great Gatsby",
+            "author": "F Scott Fitzgerald",
+            "ISBN": "7",
+            "copy": 2,
+            "borrowedBookCount": 1,
+            "borrowCode": "SyXHEgPA",
+            "borrowedDate": "2024-01-30T18:32:36.3537935+03:00",
+            "endBorrowDate": "2024-01-31T05:41:54.3537935+03:00",
+            "expired": false
+        },
+        "ypHLXBm8": {
+            "$type": "Runtime.Contexts.Main.Vo.BookVo, Assembly-CSharp",
+            "title": "Wuthering Heights",
+            "author": "Emily Bronte",
+            "ISBN": "13",
+            "copy": 6,
+            "borrowedBookCount": 2,
+            "borrowCode": "ypHLXBm8",
+            "borrowedDate": "2024-01-30T18:33:14.2481776+03:00",
+            "endBorrowDate": "2024-02-06T04:37:48.2481776+03:00",
+            "expired": false
+        }
+    },
+    "expiredBooks": {
+        "RQD9H6xf": {
+            "$type": "Runtime.Contexts.Main.Vo.BookVo, Assembly-CSharp",
+            "title": "Anna Karenina",
+            "author": "Leo Tolstoy",
+            "ISBN": "17",
+            "copy": 8,
+            "borrowedBookCount": 1,
+            "borrowCode": "RQD9H6xf",
+            "borrowedDate": "2024-01-30T18:32:31.0750545+03:00",
+            "endBorrowDate": "2024-01-30T18:32:41.0750545+03:00",
+            "expired": true
+        },
+        "4e39kZUV": {
+            "$type": "Runtime.Contexts.Main.Vo.BookVo, Assembly-CSharp",
+            "title": "Anna Karenina",
+            "author": "Leo Tolstoy",
+            "ISBN": "17",
+            "copy": 8,
+            "borrowedBookCount": 3,
+            "borrowCode": "4e39kZUV",
+            "borrowedDate": "2024-01-30T18:33:13.2273050+03:00",
+            "endBorrowDate": "2024-01-30T18:34:03.2273050+03:00",
+            "expired": true
+        },
+        "E8MBOf8i": {
+            "$type": "Runtime.Contexts.Main.Vo.BookVo, Assembly-CSharp",
+            "title": "Jane Eyre",
+            "author": "Charlotte Bronte",
+            "ISBN": "33",
+            "copy": 7,
+            "borrowedBookCount": 1,
+            "borrowCode": "E8MBOf8i",
+            "borrowedDate": "2024-01-30T18:32:31.9234731+03:00",
+            "endBorrowDate": "2024-01-30T18:57:59.9234731+03:00",
+            "expired": true
+        },
+        "39rrFDSX": {
+            "$type": "Runtime.Contexts.Main.Vo.BookVo, Assembly-CSharp",
+            "title": "The Great Gatsby",
+            "author": "F Scott Fitzgerald",
+            "ISBN": "7",
+            "copy": 2,
+            "borrowedBookCount": 2,
+            "borrowCode": "39rrFDSX",
+            "borrowedDate": "2024-01-30T18:32:37.1434756+03:00",
+            "endBorrowDate": "2024-01-30T19:01:19.1434756+03:00",
+            "expired": true
+        }
+    }
 }

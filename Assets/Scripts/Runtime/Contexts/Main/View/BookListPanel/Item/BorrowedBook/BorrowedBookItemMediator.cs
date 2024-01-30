@@ -63,7 +63,7 @@ namespace Runtime.Contexts.Main.View.BookListPanel.Item.BorrowedBook
     private void SetItemContent()
     {
       view.listNumberText.text = view.GetID() + 1 + ".";
-      view.isbnText.text = view.GetBookVo().ISBN.ToString();
+      view.isbnText.text = view.GetBookVo().ISBN;
       view.bookNameText.text = view.GetBookVo().title;
       view.borrowedDateText.text = view.GetBookVo().borrowedDate.ToString(CultureInfo.CurrentCulture);
       view.endBorrowedDateText.text = view.GetBookVo().endBorrowDate.ToString(CultureInfo.CurrentCulture);

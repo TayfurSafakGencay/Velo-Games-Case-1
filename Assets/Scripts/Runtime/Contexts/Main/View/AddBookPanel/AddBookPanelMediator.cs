@@ -57,7 +57,7 @@ namespace Runtime.Contexts.Main.View.AddBookPanel
       {
         title = view.titleInput.text,
         author = view.authorInput.text,
-        ISBN = Convert.ToInt32(view.ISBNInput.text),
+        ISBN = view.ISBNInput.text,
         copy = Convert.ToInt32(view.copyInput.text),
         borrowedBookCount = 0
       };

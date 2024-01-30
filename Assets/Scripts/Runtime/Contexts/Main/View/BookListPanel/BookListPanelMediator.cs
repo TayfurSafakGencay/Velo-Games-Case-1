@@ -88,6 +88,8 @@ namespace Runtime.Contexts.Main.View.BookListPanel
     {
       view.displayBookVos.Clear();
       view.displayBookVos = libraryModel.GetBookList().Values.ToList();
+      
+      view.displayBookVos = view.displayBookVos.OrderBy(a => Convert.ToInt64(a.ISBN)).ToList();
 
       view.page = 1;
       CreateItems(1);
@@ -100,15 +102,17 @@ namespace Runtime.Contexts.Main.View.BookListPanel
     {
       view.displayBookVos.Clear();
 
-      Dictionary<string, int> bookList = libraryModel.GetBookISBNList();
+      Dictionary<string, string> bookList = libraryModel.GetBookISBNList();
       List<string> filteredList = bookList.Keys.ToList().Where(title => title.Contains(view.searchInputField.text, StringComparison.OrdinalIgnoreCase)).ToList();
 
       for (int i = 0; i < filteredList.Count; i++)
       {
-        int isbn = bookList[filteredList.ElementAt(i)];
+        string isbn = bookList[filteredList.ElementAt(i)];
         if (libraryModel.GetBookList().ContainsKey(isbn))
           view.displayBookVos.Add(libraryModel.GetBookList()[isbn]);
       }
+
+      view.displayBookVos = view.displayBookVos.OrderBy(a => Convert.ToInt64(a.ISBN)).ToList();
 
       view.page = 1;
       CreateItems(1);
@@ -121,12 +125,12 @@ namespace Runtime.Contexts.Main.View.BookListPanel
     {
       view.displayBookVos.Clear();
 
-      Dictionary<string, List<int>> authorList = libraryModel.GetAuthorBooks();
+      Dictionary<string, List<string>> authorList = libraryModel.GetAuthorBooks();
       List<string> filteredList = authorList.Keys.ToList().Where(author => author.Contains(view.searchInputField.text, StringComparison.OrdinalIgnoreCase)).ToList();
 
       for (int i = 0; i < filteredList.Count; i++)
       {
-        List<int> isbnList = authorList[filteredList.ElementAt(i)];
+        List<string> isbnList = authorList[filteredList.ElementAt(i)];
 
         for (int j = 0; j < isbnList.Count; j++)
         {
@@ -135,6 +139,8 @@ namespace Runtime.Contexts.Main.View.BookListPanel
           view.displayBookVos.Add(bookVo);
         }
       }
+
+      view.displayBookVos = view.displayBookVos.OrderBy(a => Convert.ToInt64(a.ISBN)).ToList();
 
       view.page = 1;
       CreateItems(1);
@@ -159,6 +165,8 @@ namespace Runtime.Contexts.Main.View.BookListPanel
         BookVo book = borrowedBooks[filteredList[i]];
         view.displayBookVos.Add(book);
       }
+      
+      view.displayBookVos = view.displayBookVos.OrderBy(a => a.endBorrowDate).ToList();
 
       view.page = 1;
       CreateItems(2);
@@ -183,6 +191,8 @@ namespace Runtime.Contexts.Main.View.BookListPanel
         BookVo book = expiredBooks[filteredList[i]];
         view.displayBookVos.Add(book);
       }
+
+      view.displayBookVos = view.displayBookVos.OrderBy(a => a.endBorrowDate).ToList();
 
       view.page = 1;
       CreateItems(2);

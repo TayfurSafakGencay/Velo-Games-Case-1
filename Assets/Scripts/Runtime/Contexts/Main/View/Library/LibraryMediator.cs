@@ -9,7 +9,7 @@ namespace Runtime.Contexts.Main.View.Library
   {
     OpenBookPanel,
     OpenBookListPanel,
-    LoadReadyData
+    Exit
   }
 
   public class LibraryMediator : EventMediator
@@ -24,7 +24,7 @@ namespace Runtime.Contexts.Main.View.Library
     {
       view.dispatcher.AddListener(LibraryMediatorEvent.OpenBookPanel, OnOpenAddBookPanel);
       view.dispatcher.AddListener(LibraryMediatorEvent.OpenBookListPanel, OnOpenBookListPanel);
-      view.dispatcher.AddListener(LibraryMediatorEvent.LoadReadyData, OnLoadReadyData);
+      view.dispatcher.AddListener(LibraryMediatorEvent.Exit, OnExit);
     }
 
     private void OnOpenAddBookPanel()
@@ -47,16 +47,19 @@ namespace Runtime.Contexts.Main.View.Library
       libraryModel.Save(Application.dataPath + "/Scripts/Runtime/Contexts/Main/Data/Data.json");
     }
 
-    private void OnLoadReadyData()
+    private void OnExit()
     {
-      libraryModel.Load(Application.dataPath + "/Scripts/Runtime/Contexts/Main/Data/ReadyData.json");
+#if UNITY_EDITOR
+      UnityEditor.EditorApplication.isPlaying = false;
+#endif
+      Application.Quit();
     }
 
     public override void OnRemove()
     {
       view.dispatcher.RemoveListener(LibraryMediatorEvent.OpenBookPanel, OnOpenAddBookPanel);
       view.dispatcher.RemoveListener(LibraryMediatorEvent.OpenBookListPanel, OnOpenBookListPanel);
-      view.dispatcher.RemoveListener(LibraryMediatorEvent.LoadReadyData, OnLoadReadyData);
+      view.dispatcher.RemoveListener(LibraryMediatorEvent.Exit, OnExit);
     }
   }
 }

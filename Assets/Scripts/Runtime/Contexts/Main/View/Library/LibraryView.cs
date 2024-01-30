@@ -14,9 +14,9 @@ namespace Runtime.Contexts.Main.View.Library
       dispatcher.Dispatch(LibraryMediatorEvent.OpenBookListPanel);
     }
 
-    public void OnLoadReadyData()
+    public void OnExit()
     {
-      dispatcher.Dispatch(LibraryMediatorEvent.LoadReadyData);
+      dispatcher.Dispatch(LibraryMediatorEvent.Exit);
     }
   }
 }

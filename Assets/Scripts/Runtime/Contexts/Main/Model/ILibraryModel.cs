@@ -7,7 +7,7 @@ namespace Runtime.Contexts.Main.Model
   {
     void AddBook(BookVo bookVo);
 
-    BookVo BorrowBook(int isbn);
+    BookVo BorrowBook(string isbn);
 
     void ReturnBook(string borrowCode);
 
@@ -17,11 +17,11 @@ namespace Runtime.Contexts.Main.Model
 
     void Load(string path);
 
-    Dictionary<int, BookVo> GetBookList();
+    Dictionary<string, BookVo> GetBookList();
 
-    Dictionary<string, int> GetBookISBNList();
+    Dictionary<string, string> GetBookISBNList();
 
-    Dictionary<string, List<int>> GetAuthorBooks();
+    Dictionary<string, List<string>> GetAuthorBooks();
 
     Dictionary<string, BookVo> GetBorrowedBooks();
 

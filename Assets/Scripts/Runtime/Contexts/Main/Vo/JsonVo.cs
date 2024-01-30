@@ -6,11 +6,11 @@ namespace Runtime.Contexts.Main.Vo
   [Serializable]
   public class JsonVo
   {
-    public Dictionary<int, BookVo> bookVos;
+    public Dictionary<string, BookVo> bookVos;
 
-    public Dictionary<string, List<int>> authorsBooks;
+    public Dictionary<string, List<string>> authorsBooks;
     
-    public Dictionary<string, int> bookIsbn;
+    public Dictionary<string, string> bookIsbn;
     
     public Dictionary<string, BookVo> borrowedBooks;
     

@@ -14,11 +14,11 @@ namespace Runtime.Contexts.Main.Model
 {
   public class LibraryModel : ILibraryModel
   {
-    private Dictionary<int, BookVo> bookVos { get; set; }
+    private Dictionary<string, BookVo> books { get; set; }
 
-    private Dictionary<string, List<int>> authorsBooks { get; set; }
+    private Dictionary<string, List<string>> authorsBooks { get; set; }
 
-    private Dictionary<string, int> bookIsbn { get; set; }
+    private Dictionary<string, string> bookIsbn { get; set; }
 
     private Dictionary<string, BookVo> borrowedBooks { get; set; }
     
@@ -27,21 +27,21 @@ namespace Runtime.Contexts.Main.Model
     [PostConstruct]
     public void OnPostConstruct()
     {
-      bookVos = new Dictionary<int, BookVo>();
-      authorsBooks = new Dictionary<string, List<int>>();
-      bookIsbn = new Dictionary<string, int>();
+      books = new Dictionary<string, BookVo>();
+      authorsBooks = new Dictionary<string, List<string>>();
+      bookIsbn = new Dictionary<string, string>();
       borrowedBooks = new Dictionary<string, BookVo>();
       expiredBooks = new Dictionary<string, BookVo>();
     }
 
     public void AddBook(BookVo bookVo)
     {
-      if (bookVos.ContainsKey(bookVo.ISBN))
+      if (books.ContainsKey(bookVo.ISBN))
       {
-        BookVo book = bookVos[bookVo.ISBN];
+        BookVo book = books[bookVo.ISBN];
         if (book.title == bookVo.title && book.author == bookVo.author)
         {
-          bookVos[bookVo.ISBN].copy += bookVo.copy;
+          books[bookVo.ISBN].copy += bookVo.copy;
           Debugger.AddedCopy(bookVo);
         }
         else
@@ -53,7 +53,7 @@ namespace Runtime.Contexts.Main.Model
       {
         if (!bookIsbn.ContainsKey(bookVo.title))
         {
-          bookVos.Add(bookVo.ISBN, bookVo);
+          books.Add(bookVo.ISBN, bookVo);
           bookIsbn.Add(bookVo.title, bookVo.ISBN);
         }
         else
@@ -73,20 +73,20 @@ namespace Runtime.Contexts.Main.Model
         }
         else
         {
-          authorsBooks.Add(bookVo.author, new List<int> { bookVo.ISBN });
+          authorsBooks.Add(bookVo.author, new List<string> { bookVo.ISBN });
         }
       }
     }
 
-    public BookVo BorrowBook(int isbn)
+    public BookVo BorrowBook(string isbn)
     {
       BookVo book = new()
       {
-        title = bookVos[isbn].title,
-        author = bookVos[isbn].author,
-        ISBN = bookVos[isbn].ISBN,
-        copy = bookVos[isbn].copy,
-        borrowedBookCount = bookVos[isbn].borrowedBookCount,
+        title = books[isbn].title,
+        author = books[isbn].author,
+        ISBN = books[isbn].ISBN,
+        copy = books[isbn].copy,
+        borrowedBookCount = books[isbn].borrowedBookCount,
       };
 
       if (book.borrowedBookCount >= book.copy)
@@ -97,7 +97,7 @@ namespace Runtime.Contexts.Main.Model
       book.borrowCode = CreateRandomBorrowCode(8);
       book.borrowedBookCount++;
 
-      bookVos[isbn].borrowedBookCount++;
+      books[isbn].borrowedBookCount++;
 
       borrowedBooks.Add(book.borrowCode, book);
 
@@ -130,7 +130,7 @@ namespace Runtime.Contexts.Main.Model
         second = UnityRandom.Range(0, 61);
         minute = UnityRandom.Range(0, 61);
         hour = UnityRandom.Range(0, 25);
-        day = UnityRandom.Range(0, 3);
+        day = UnityRandom.Range(0, 7);
       }
 
       DateTime deadline = borrowedDate;
@@ -144,12 +144,22 @@ namespace Runtime.Contexts.Main.Model
 
     public void ReturnBook(string borrowCode)
     {
-      int isbn = borrowedBooks[borrowCode].ISBN;
-      bookVos[isbn].borrowedBookCount--;
+      if (borrowedBooks.ContainsKey(borrowCode))
+      {
+        string isbn = borrowedBooks[borrowCode].ISBN;
+        books[isbn].borrowedBookCount--;
 
-      borrowedBooks.Remove(borrowCode);
-
-      Debugger.ReturnedBook(bookVos[isbn]);
+        Debugger.ReturnedBook(borrowedBooks[borrowCode]);
+        borrowedBooks.Remove(borrowCode);
+      }
+      else if (expiredBooks.ContainsKey(borrowCode))
+      {
+        string isbn = expiredBooks[borrowCode].ISBN;
+        books[isbn].borrowedBookCount--;
+        
+        Debugger.ReturnedBook(expiredBooks[borrowCode]);
+        expiredBooks.Remove(borrowCode);
+      }
     }
 
     public void Expired()
@@ -191,7 +201,7 @@ namespace Runtime.Contexts.Main.Model
     {
       JsonVo jsonVo = new()
       {
-        bookVos = bookVos,
+        bookVos = books,
         authorsBooks = authorsBooks,
         bookIsbn = bookIsbn,
         borrowedBooks = borrowedBooks,
@@ -217,7 +227,7 @@ namespace Runtime.Contexts.Main.Model
       JsonVo data = JsonSerialization.FromJson<JsonVo>(jsonLoadData);
 
       if (data.bookVos != null)
-        bookVos = data.bookVos;
+        books = data.bookVos;
 
       if (data.authorsBooks != null)
         authorsBooks = data.authorsBooks;
@@ -234,17 +244,17 @@ namespace Runtime.Contexts.Main.Model
       Debugger.JsonLoad();
     }
     
-    public Dictionary<int, BookVo> GetBookList()
+    public Dictionary<string, BookVo> GetBookList()
     {
-      return bookVos;
+      return books;
     }
 
-    public Dictionary<string, int> GetBookISBNList()
+    public Dictionary<string, string> GetBookISBNList()
     {
       return bookIsbn;
     }
 
-    public Dictionary<string, List<int>> GetAuthorBooks()
+    public Dictionary<string, List<string>> GetAuthorBooks()
     {
       return authorsBooks;
     }

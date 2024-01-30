@@ -9,7 +9,7 @@ namespace Runtime.Contexts.Main.Vo
 
     public string author;
 
-    public int ISBN;
+    public string ISBN;
 
     public int copy;
 
