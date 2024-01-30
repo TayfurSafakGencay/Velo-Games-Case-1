@@ -1,37 +1,65 @@
 ﻿using System;
+using Module.Debugger;
 using Runtime.Contexts.Main.Model;
 using Runtime.Contexts.Main.Vo;
 using strange.extensions.mediation.impl;
+using UnityEngine;
 
-namespace Runtime.Contexts.Main.View.AddBookPage
+namespace Runtime.Contexts.Main.View.AddBookPanel
 {
-  public enum AddBookPageEvent
+  public enum AddBookPanelEvent
   {
     AddBook,
     ClosePanel
   }
-  public class AddBookPageMediator : EventMediator
+  public class AddBookPanelMediator : EventMediator
   {
     [Inject]
-    public AddBookPageView view { get; set; }
+    public AddBookPanelView view { get; set; }
     
     [Inject]
     public ILibraryModel libraryModel { get; set; }
 
     public override void OnRegister()
     {
-      view.dispatcher.AddListener(AddBookPageEvent.AddBook, OnAddBook);
-      view.dispatcher.AddListener(AddBookPageEvent.ClosePanel, OnClosePage);
+      view.dispatcher.AddListener(AddBookPanelEvent.AddBook, OnAddBook);
+      view.dispatcher.AddListener(AddBookPanelEvent.ClosePanel, OnClosePage);
+    }
+
+    private void Update()
+    {
+      if (Input.GetKeyDown(KeyCode.Tab))
+      {
+        NavigateToNextInputField();
+      }
+    }
+
+    private void NavigateToNextInputField()
+    {
+      for (int i = 0; i < view.inputFields.Count; i++)
+      {
+        if (!view.inputFields[i].isFocused) continue;
+        int nextIndex = (i + 1) % view.inputFields.Count;
+        view.inputFields[nextIndex].Select();
+        view.inputFields[nextIndex].ActivateInputField();
+        break;
+      }
     }
     
     private void OnAddBook()
     {
+      if (view.titleInput.text == "" || view.authorInput.text == "" || view.ISBNInput.text == "" || view.copyInput.text == "")
+      {
+        Debugger.EmptyError();
+        return;
+      }
       BookVo bookVo = new()
       {
         title = view.titleInput.text,
         author = view.authorInput.text,
         ISBN = Convert.ToInt32(view.ISBNInput.text),
         copy = Convert.ToInt32(view.copyInput.text),
+        borrowedBookCount = 0
       };
       
       libraryModel.AddBook(bookVo);
@@ -44,8 +72,8 @@ namespace Runtime.Contexts.Main.View.AddBookPage
 
     public override void OnRemove()
     {
-      view.dispatcher.RemoveListener(AddBookPageEvent.AddBook, OnAddBook);
-      view.dispatcher.RemoveListener(AddBookPageEvent.ClosePanel, OnClosePage);
+      view.dispatcher.RemoveListener(AddBookPanelEvent.AddBook, OnAddBook);
+      view.dispatcher.RemoveListener(AddBookPanelEvent.ClosePanel, OnClosePage);
     }
   }
 }

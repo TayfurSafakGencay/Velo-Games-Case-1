@@ -1,9 +1,10 @@
-﻿using strange.extensions.mediation.impl;
+﻿using System.Collections.Generic;
+using strange.extensions.mediation.impl;
 using TMPro;
 
-namespace Runtime.Contexts.Main.View.AddBookPage
+namespace Runtime.Contexts.Main.View.AddBookPanel
 {
-  public class AddBookPageView : EventView
+  public class AddBookPanelView : EventView
   {
     public TMP_InputField titleInput;
 
@@ -12,15 +13,17 @@ namespace Runtime.Contexts.Main.View.AddBookPage
     public TMP_InputField ISBNInput;
 
     public TMP_InputField copyInput;
-    
+
+    public List<TMP_InputField> inputFields;
+
     public void OnAddBook()
     {
-      dispatcher.Dispatch(AddBookPageEvent.AddBook);
+      dispatcher.Dispatch(AddBookPanelEvent.AddBook);
     }
 
     public void OnClosePanel()
     {
-      dispatcher.Dispatch(AddBookPageEvent.ClosePanel);
+      dispatcher.Dispatch(AddBookPanelEvent.ClosePanel);
     }
   }
 }
